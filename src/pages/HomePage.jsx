@@ -8,13 +8,21 @@ import './HomePage.css'
 
 export function HomePage() {
     const [products, setProducts] = useState([]);
+    const [cart, setCart] = useState([]);
 
    useEffect(() => {
 
-    axios.get('http://localhost:3000/api/products')
+    axios.get('/api/products')
         .then((response) => {
             setProducts(response.data);
         })
+
+    axios.get('/api/cart-items')
+         .then((response) => {
+            setCart(response.data);
+         })
+
+        
    }, []);
 
 
@@ -47,8 +55,8 @@ export function HomePage() {
                 </a>
 
                 <a className="cart-link header-link" href="/checkout">
-                <img className="cart-icon" src="images/icons/cart-icon.png" />
-                <div className="cart-quantity">3</div>
+                <img className="cart-icon" src={"images/icons/cart-icon.png"} />
+                <div className="cart-quantity">{cart.length}</div>
                 <div className="cart-text">Cart</div>
                 </a>
             </div>
