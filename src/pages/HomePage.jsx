@@ -8,7 +8,7 @@ import './HomePage.css'
 
 export function HomePage({ cart }) {
     const [products, setProducts] = useState([]);
-   
+    
 
    useEffect(() => {
 
@@ -17,8 +17,6 @@ export function HomePage({ cart }) {
             setProducts(response.data);
         })
 
-    
-        
    }, []);
 
 
